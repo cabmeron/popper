@@ -1,0 +1,3 @@
+07/27/2025:
+* 2D Cross Hair w/ AWSD & UDLR control
+* Gun Shooting & Mixer Blocking Reload Audio Integration (ytmp3 -> ableton -> mp3 exports)
