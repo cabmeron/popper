@@ -1,7 +1,10 @@
 import os
 import pygame
 import random
+from sprite import SpriteSheet
 
+SCREEN_HEIGHT = 720
+SCREEN_WIDTH = 1280
 
 def update_vector_cluster_position_up(cluster, new_pos, dt):
     for vec in cluster:
@@ -43,6 +46,8 @@ def main():
 
     # CORE SCENE IMAGES
     background_img = pygame.transform.scale(pygame.image.load("assets/art/background.png"), (1280, 720))
+    black_cat_sprite = SpriteSheet('assets/art/sprite_sheets/black_0.png')
+    black_cat_sprite.image_at((0, 0, 32, 32))
 
     # VECTORS
     ball_1 = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
@@ -51,7 +56,6 @@ def main():
     ball_4 = pygame.Vector2(screen.get_width() / 2 , screen.get_height() / 2 + 45)
     ball_5 = pygame.Vector2(screen.get_width() / 2 , screen.get_height() / 2 - 45)
     ball_cluster = [ball_1, ball_2, ball_3, ball_4, ball_5]
-
 
     target_1 = pygame.Vector2(0, random.randint(20, screen.get_height() - 20))
 
@@ -71,8 +75,7 @@ def main():
     shot_positions = [ gun_shot1, gun_shot2, gun_shot3, gun_shot4, gun_shot5, gun_shot6 ]
     shot_index = 0
     num_shots = len(shot_positions)
-    
-    
+        
     # GAME LOOP
     while running:
 
@@ -108,7 +111,7 @@ def main():
 
         for ball in ball_cluster:
             pygame.draw.circle(screen, "purple", ball, 10)
-        
+            
         # Controller Logic
         dt = clock.tick(60) / 1000
         keys = pygame.key.get_pressed()
